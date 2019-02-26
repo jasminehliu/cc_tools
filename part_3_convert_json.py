@@ -22,13 +22,14 @@ def make_level_library_from_json( json_data ):
         level.time = level_data["time"]
         level.num_chips = level_data["chipNum"]
         level.upper_layer = level_data["Upper_layer"]
-        
+        level.lower_layer = level_data["Lower_layer"]
         
         optional_fields = level_data["optional"]
         hint = cc_data.CCMapHintField(optional_fields["hint"])
         level.add_field(hint)
         title = cc_data.CCMapTitleField(optional_fields["title"])
         level.add_field(title)
+        
         
         level_library.add_level(level)
     
