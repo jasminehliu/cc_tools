@@ -29,7 +29,13 @@ def make_level_library_from_json( json_data ):
         level.add_field(hint)
         title = cc_data.CCMapTitleField(optional_fields["title"])
         level.add_field(title)
-        
+        monsters = [];
+        monster_coords = optional_fields["monsters"]
+        for i in monster_coords:
+            monster = cc_data.CCCoordinate(i[0], i[1])
+            monsters.append(monster)
+        monster_field = cc_data.CCMonsterMovementField(monsters)
+        level.add_field(monster_field)
         
         level_library.add_level(level)
     
